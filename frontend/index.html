@@ -2,7 +2,6 @@
 
 <html dir="ltr" lang="en">
 <head>
-  <meta name="robots" content="noindex, nofollow, noarchive">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Unified WTG Analysis &amp; Reporting Workspace</title>
@@ -4338,6 +4337,48 @@
     display: flex !important;
   }
 </style>
+
+<style id="v26-soft-choose-file-cards">
+  /* Softer Choose File upload cards */
+  #unified-controls .uploader-grid .field-card {
+    background: rgba(255,255,255,.76) !important;
+    border-color: #edf2f7 !important;
+    box-shadow: none !important;
+  }
+  #unified-controls .uploader-grid .field-card:hover {
+    background: rgba(255,255,255,.9) !important;
+    border-color: #e5ebf2 !important;
+  }
+  #unified-controls .upload-field-tag {
+    background: #f7f9fc !important;
+    border-color: #edf2f7 !important;
+    color: #7b8794 !important;
+  }
+  #unified-controls .field-card label {
+    color: #52677b !important;
+  }
+  #unified-controls .field-card input[type="file"] {
+    background: #ffffff !important;
+    border-color: #e8eef5 !important;
+    color: #64748b !important;
+    box-shadow: none !important;
+  }
+  #unified-controls .field-card input[type="file"]::file-selector-button {
+    background: #f8fafc !important;
+    border: 1px solid #e7edf4 !important;
+    color: #64748b !important;
+    border-radius: 10px !important;
+    padding: 8px 12px !important;
+    margin-right: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+  }
+  #unified-controls .field-card input[type="file"]::file-selector-button:hover {
+    background: #f1f5f9 !important;
+    color: #52677b !important;
+  }
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -4526,18 +4567,6 @@
 </div>
 </section>
 <section class="workspace">
-<div class="workspace-head">
-<div class="workspace-head-row">
-<div>
-<strong>Unified Analysis Page</strong>
-<div class="meta">All tools are visible on the same workspace page, without tabs and without a hard visual separation between them.</div>
-</div>
-<div class="head-actions">
-<button class="action-btn" id="reloadAll" type="button">Reload all</button>
-<button class="action-btn" id="scrollTopBtn" type="button">Back to top</button>
-</div>
-</div>
-</div>
 <div class="content">
 <div class="stack">
 <section class="app-section" id="section-aaw">
@@ -5008,13 +5037,19 @@ function updateAawIgnoreHint() {
       });
     });
 
-    document.getElementById('reloadAll').addEventListener('click', () => {
-      Object.keys(frames).forEach(key => loadFrame(key, true));
-    });
+    const reloadAllBtn = document.getElementById('reloadAll');
+    if (reloadAllBtn) {
+      reloadAllBtn.addEventListener('click', () => {
+        Object.keys(frames).forEach(key => loadFrame(key, true));
+      });
+    }
 
-    document.getElementById('scrollTopBtn').addEventListener('click', () => {
-      window.scrollTo({ top:0, behavior:'smooth' });
-    });
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top:0, behavior:'smooth' });
+      });
+    }
 
     const unifiedState = {
       files: {
@@ -8648,6 +8683,55 @@ function updateAawIgnoreHint() {
 <\/script>
 
 <!-- temp chart ALL-selection fix v2 -->
+
+
+
+<style id="ms-wider-workspace-v3">
+  /* Wider workspace view requested: more horizontal room for dashboards and tables. */
+  @media (min-width: 1024px) {
+    .shell {
+      width: calc(100vw - 18px) !important;
+      max-width: 2140px !important;
+      padding-left: 9px !important;
+      padding-right: 9px !important;
+    }
+
+    .content {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+    }
+
+    body:not(.aws-analytics-fullwidth-active):not(.manual-sidebar-hidden) .unified-layout {
+      grid-template-columns: minmax(0, 1fr) 300px !important;
+      gap: 14px !important;
+    }
+
+    .unified-main-column,
+    .workspace,
+    .stack,
+    .frame-wrap,
+    iframe {
+      max-width: none !important;
+    }
+
+    .unified-filter-sidebar {
+      max-width: 300px !important;
+    }
+  }
+</style>
+
+
+
+
+
+<style id="ms-remove-unified-heading-gap-v1">
+  .workspace > .content {
+    padding-top: 0 !important;
+  }
+  .workspace {
+    margin-top: 10px !important;
+  }
+</style>
 </body>
 </html>`;
     }
@@ -28137,6 +28221,1068 @@ function bindUnifiedInputs() {
   window.addEventListener('load', function(){ window.setTimeout(normalizePlacement, 500); });
 })();
 </script>
+
+
+<style id="ms-professional-ui-polish">
+  :root {
+    --ms-surface: #ffffff;
+    --ms-soft: #f8fafc;
+    --ms-soft-2: #eef5ff;
+    --ms-line: rgba(148, 163, 184, .28);
+    --ms-ink: #0f172a;
+    --ms-muted: #64748b;
+    --ms-blue: #2563eb;
+    --ms-green: #16a34a;
+    --ms-red: #dc2626;
+    --ms-orange: #f97316;
+    --ms-purple: #7c3aed;
+    --ms-shadow: 0 16px 40px rgba(15, 23, 42, .08);
+  }
+
+  body {
+    background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%) !important;
+  }
+
+  .shell {
+    max-width: 1780px !important;
+    padding-top: 18px !important;
+  }
+
+  .hero {
+    padding: 16px 18px !important;
+    border-radius: 24px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, .07) !important;
+    background: linear-gradient(120deg, #ffffff 0%, #f4f8ff 100%) !important;
+  }
+
+  .hero-row {
+    align-items: center !important;
+  }
+
+  .hero-brand img {
+    max-height: 56px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(22px, 1.8vw, 30px) !important;
+    margin-bottom: 4px !important;
+  }
+
+  .hero p {
+    font-size: 14px !important;
+    max-width: 920px !important;
+  }
+
+  .report-cta-shell {
+    position: sticky !important;
+    top: 10px !important;
+    z-index: 90 !important;
+    margin: 0 0 12px !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .report-cta-bar {
+    margin-top: 0 !important;
+    padding: 10px !important;
+    border: 1px solid rgba(148, 163, 184, .24) !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, .88) !important;
+    backdrop-filter: blur(14px) !important;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .08) !important;
+    align-items: center !important;
+  }
+
+  .report-cta-btn,
+  .primary-btn,
+  .ghost-btn,
+  .soft-btn-outer,
+  .action-btn,
+  .sidebar-action-btn,
+  .outer-recur-btn,
+  .outer-limit-tab-btn {
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease !important;
+  }
+
+  .report-cta-btn:hover,
+  .primary-btn:hover,
+  .ghost-btn:hover,
+  .soft-btn-outer:hover,
+  .action-btn:hover,
+  .sidebar-action-btn:hover,
+  .outer-recur-btn:hover,
+  .outer-limit-tab-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, .09) !important;
+  }
+
+  .export-report-btn {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 55%, #0ea5e9 100%) !important;
+    color: #ffffff !important;
+    border-color: rgba(37, 99, 235, .42) !important;
+    min-width: 190px !important;
+  }
+
+  .clear-report-btn {
+    background: #ffffff !important;
+    color: #334155 !important;
+    border-color: var(--ms-line) !important;
+  }
+
+  .ms-system-status-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 0 0 12px;
+    padding: 10px 14px;
+    border: 1px solid rgba(148, 163, 184, .24);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .86);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, .05);
+  }
+
+  .ms-system-status-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 850;
+    color: var(--ms-ink);
+  }
+
+  .ms-system-status-title::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--ms-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+  }
+
+  .ms-system-status-items {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ms-status-token {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f8fafc;
+    border: 1px solid rgba(148, 163, 184, .24);
+    color: #334155;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .ms-status-token[data-state="ready"] {
+    background: #ecfdf5;
+    color: #166534;
+    border-color: rgba(22, 163, 74, .22);
+  }
+
+  .ms-status-token[data-state="warning"] {
+    background: #fff7ed;
+    color: #9a3412;
+    border-color: rgba(249, 115, 22, .24);
+  }
+
+  #unified-controls {
+    margin-bottom: 14px !important;
+  }
+
+  .upload-hub-shell {
+    grid-template-columns: minmax(0, 1.48fr) minmax(310px, .82fr) !important;
+    gap: 14px !important;
+  }
+
+  .upload-hub-main,
+  .upload-side-card,
+  .report-head,
+  .report-body,
+  .workspace,
+  .stack,
+  .app-section,
+  .deck-card {
+    border-color: rgba(148, 163, 184, .24) !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, .06) !important;
+  }
+
+  .upload-hub-main,
+  .upload-side-card {
+    border-radius: 22px !important;
+    background: #ffffff !important;
+  }
+
+  .upload-hub-main::before,
+  .upload-side-card::before {
+    height: 4px !important;
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 55%, #22c55e 100%) !important;
+  }
+
+  #unified-controls h3 {
+    font-size: 22px !important;
+    color: #0f172a !important;
+  }
+
+  #unified-controls .upload-intro {
+    font-size: 13.5px !important;
+    max-width: 760px !important;
+  }
+
+  .upload-kicker {
+    margin-bottom: 7px !important;
+    padding: 5px 10px !important;
+    background: #eff6ff !important;
+  }
+
+  .upload-live-chip,
+  .upload-summary-badge,
+  .status-card,
+  .upload-file-item,
+  .field-card,
+  .report-kpi,
+  .outer-recur-kpi {
+    border-color: rgba(148, 163, 184, .26) !important;
+    background: #ffffff !important;
+  }
+
+  .upload-summary-badges {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  #unified-controls .uploader-grid {
+    grid-template-columns: repeat(5, minmax(170px, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  #unified-controls .field-card {
+    padding: 12px !important;
+    border-radius: 16px !important;
+    background: #f8fafc !important;
+  }
+
+  #unified-controls .field-card label {
+    font-weight: 800 !important;
+    color: #1e293b !important;
+    line-height: 1.35 !important;
+  }
+
+  #unified-controls .field-card input[type="file"] {
+    min-height: 44px !important;
+    padding: 7px 8px !important;
+    background: #ffffff !important;
+    cursor: pointer !important;
+  }
+
+  #unified-controls .field-card input[type="file"]::file-selector-button {
+    border: 0;
+    border-radius: 10px;
+    padding: 9px 11px;
+    margin-right: 10px;
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 850;
+    cursor: pointer;
+  }
+
+  .upload-slot-note {
+    font-size: 11.5px !important;
+  }
+
+  .ms-upload-toggle {
+    appearance: none;
+    border: 1px solid rgba(148, 163, 184, .32);
+    background: #ffffff;
+    color: #0f172a;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 850;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .ms-upload-toggle:hover {
+    border-color: rgba(37, 99, 235, .38);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, .10);
+  }
+
+  .upload-hub-shell.is-upload-collapsed .uploader-grid,
+  .upload-hub-shell.is-upload-collapsed .inline-actions,
+  .upload-hub-shell.is-upload-collapsed .deck-note,
+  .upload-hub-shell.is-upload-collapsed .upload-side-stack {
+    display: none !important;
+  }
+
+  .upload-hub-shell.is-upload-collapsed {
+    grid-template-columns: 1fr !important;
+  }
+
+  .upload-hub-shell.is-upload-collapsed .upload-hub-main {
+    padding-bottom: 12px !important;
+  }
+
+  .upload-hub-shell.is-upload-collapsed .upload-summary-badges {
+    margin-bottom: 0 !important;
+  }
+
+  .ms-kpi-overview {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 0 0 14px;
+  }
+
+  .ms-kpi-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 96px;
+    padding: 14px 14px 12px;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, .24);
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+  }
+
+  .ms-kpi-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: #2563eb;
+  }
+
+  .ms-kpi-card[data-state="ready"]::before { background: #16a34a; }
+  .ms-kpi-card[data-state="warning"]::before { background: #f97316; }
+  .ms-kpi-card[data-state="danger"]::before { background: #dc2626; }
+
+  .ms-kpi-label {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .ms-kpi-value {
+    display: block;
+    margin-top: 5px;
+    color: #0f172a;
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 900;
+  }
+
+  .ms-kpi-note {
+    display: block;
+    margin-top: 7px;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .ms-filter-chip-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(148, 163, 184, .24);
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, .04);
+  }
+
+  .ms-filter-chip-title {
+    color: #0f172a;
+    font-weight: 900;
+    margin-right: 3px;
+  }
+
+  .ms-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid rgba(37, 99, 235, .18);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .ms-filter-chip.is-muted {
+    background: #f8fafc;
+    color: #64748b;
+    border-color: rgba(148, 163, 184, .25);
+  }
+
+  .ms-aws-legend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(148, 163, 184, .22);
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .ms-aws-legend-title {
+    font-weight: 900;
+    color: #0f172a;
+  }
+
+  .ms-aws-legend-items {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ms-event-token {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, .25);
+    color: #334155;
+    font-size: 12px;
+    font-weight: 850;
+  }
+
+  .ms-event-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--dot-color, #64748b);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--dot-color, #64748b) 16%, transparent);
+  }
+
+  .empty-state,
+  .bridge-empty,
+  .report-placeholder {
+    border: 1px dashed rgba(148, 163, 184, .42) !important;
+    border-radius: 18px !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+    color: #64748b !important;
+  }
+
+  .workspace-head {
+    top: 64px !important;
+  }
+
+  .section-head h2 {
+    font-size: 18px !important;
+    letter-spacing: -.01em !important;
+  }
+
+  .section-badge {
+    background: #eff6ff !important;
+    border-color: rgba(37, 99, 235, .18) !important;
+    font-weight: 850 !important;
+  }
+
+  .unified-filter-sidebar {
+    border-color: rgba(148, 163, 184, .24) !important;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, .06) !important;
+  }
+
+  .sidebar-shell-head {
+    padding-bottom: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  @media (max-width: 1280px) {
+    #unified-controls .uploader-grid,
+    .upload-summary-badges,
+    .ms-kpi-overview {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    .upload-hub-shell {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .shell { padding: 12px !important; }
+    .ms-kpi-overview,
+    #unified-controls .uploader-grid,
+    .upload-summary-badges {
+      grid-template-columns: 1fr !important;
+    }
+    .report-cta-shell { top: 0 !important; }
+    .workspace-head { top: 72px !important; }
+  }
+</style>
+<script id="ms-professional-ui-polish-script">
+(function(){
+  'use strict';
+
+  function byId(id){ return document.getElementById(id); }
+  function q(sel, root){ return (root || document).querySelector(sel); }
+  function qa(sel, root){ return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function textOf(el){ return String((el && el.textContent) || '').replace(/\s+/g, ' ').trim(); }
+  function hasFile(id){ var el = byId(id); return !!(el && el.files && el.files.length); }
+  function stateFromText(value){
+    var s = String(value || '').toLowerCase();
+    if (/ready|processed|loaded|complete|done|success|passed/.test(s)) return 'ready';
+    if (/error|failed|missing/.test(s)) return 'warning';
+    return 'waiting';
+  }
+
+  function makeToken(label, value, state){
+    return '<span class="ms-status-token" data-state="' + (state || 'waiting') + '">' + label + ': ' + value + '</span>';
+  }
+
+  function ensureStatusStrip(){
+    if (byId('msSystemStatusStrip')) return;
+    var cta = q('.report-cta-shell');
+    if (!cta || !cta.parentNode) return;
+    var strip = document.createElement('div');
+    strip.id = 'msSystemStatusStrip';
+    strip.className = 'ms-system-status-strip';
+    strip.innerHTML = '<span class="ms-system-status-title">System status</span><div class="ms-system-status-items" id="msSystemStatusItems"></div>';
+    cta.parentNode.insertBefore(strip, cta.nextSibling);
+  }
+
+  function ensureKpis(){
+    if (byId('msKpiOverview')) return;
+    var controls = byId('unified-controls');
+    if (!controls || !controls.parentNode) return;
+    var kpis = document.createElement('section');
+    kpis.id = 'msKpiOverview';
+    kpis.className = 'ms-kpi-overview';
+    kpis.innerHTML = [
+      ['msKpiFiles','Selected files','0 / 5','Waiting for uploads','warning'],
+      ['msKpiAaw','AAW readiness','Waiting','Needs today + yesterday','warning'],
+      ['msKpiAws','AWS alarms','Waiting','Independent source','warning'],
+      ['msKpiXmin','X-Minutal','Waiting','Independent source','warning'],
+      ['msKpiReport','Report readiness','Low','More sources improve report strength','warning']
+    ].map(function(item){
+      return '<article class="ms-kpi-card" id="' + item[0] + '" data-state="' + item[4] + '">' +
+        '<span class="ms-kpi-label">' + item[1] + '</span>' +
+        '<strong class="ms-kpi-value">' + item[2] + '</strong>' +
+        '<small class="ms-kpi-note">' + item[3] + '</small>' +
+      '</article>';
+    }).join('');
+    controls.parentNode.insertBefore(kpis, controls.nextSibling);
+  }
+
+  function setKpi(id, value, note, state){
+    var card = byId(id);
+    if (!card) return;
+    var valueEl = q('.ms-kpi-value', card);
+    var noteEl = q('.ms-kpi-note', card);
+    if (valueEl) valueEl.textContent = value;
+    if (noteEl) noteEl.textContent = note;
+    if (state) card.setAttribute('data-state', state);
+  }
+
+  function ensureUploadToggle(){
+    var shell = q('.upload-hub-shell');
+    var live = q('.upload-hub-header .upload-live-row');
+    if (!shell || !live || byId('msUploadToggle')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'msUploadToggle';
+    btn.className = 'ms-upload-toggle';
+    btn.textContent = 'Compact upload';
+    btn.addEventListener('click', function(){
+      shell.classList.toggle('is-upload-collapsed');
+      var collapsed = shell.classList.contains('is-upload-collapsed');
+      btn.textContent = collapsed ? 'Expand upload' : 'Compact upload';
+      try { localStorage.setItem('msUploadCollapsed', collapsed ? '1' : '0'); } catch(_) {}
+    });
+    live.appendChild(btn);
+    try {
+      if (localStorage.getItem('msUploadCollapsed') === '1') {
+        shell.classList.add('is-upload-collapsed');
+        btn.textContent = 'Expand upload';
+      }
+    } catch(_) {}
+  }
+
+  function ensureFilterChips(){
+    if (byId('msFilterChipBar')) return;
+    var report = byId('unified-report');
+    if (!report) return;
+    var bar = document.createElement('div');
+    bar.id = 'msFilterChipBar';
+    bar.className = 'ms-filter-chip-bar';
+    bar.innerHTML = '<span class="ms-filter-chip-title">Active filters</span><span class="ms-filter-chip is-muted">No global filters applied</span>';
+    report.parentNode.insertBefore(bar, report);
+  }
+
+  function ensureAwsLegend(){
+    var section = byId('section-aws');
+    if (!section || byId('msAwsLegend')) return;
+    var head = q('.section-head', section);
+    if (!head) return;
+    var legend = document.createElement('div');
+    legend.id = 'msAwsLegend';
+    legend.className = 'ms-aws-legend';
+    legend.innerHTML = '<span class="ms-aws-legend-title">AWS event color legend</span>' +
+      '<div class="ms-aws-legend-items">' +
+      '<span class="ms-event-token"><i class="ms-event-dot" style="--dot-color:#b65a5a"></i>Emergency</span>' +
+      '<span class="ms-event-token"><i class="ms-event-dot" style="--dot-color:#bf8a52"></i>Limiting</span>' +
+      '<span class="ms-event-token"><i class="ms-event-dot" style="--dot-color:#8278a8"></i>Pause / Stop</span>' +
+      '<span class="ms-event-token"><i class="ms-event-dot" style="--dot-color:#5f7f95"></i>Info / Normal</span>' +
+      '<span class="ms-event-token"><i class="ms-event-dot" style="--dot-color:#8a97a5"></i>Unknown</span>' +
+      '</div>';
+    head.parentNode.insertBefore(legend, head.nextSibling);
+  }
+
+  function polishActionLabels(){
+    var exportBtn = byId('exportSelectedPdfBtn');
+    if (exportBtn && !exportBtn.__msRelabelled) {
+      exportBtn.__msRelabelled = true;
+      exportBtn.textContent = 'Generate PDF Report';
+      exportBtn.setAttribute('title', 'Export the selected report tables and visuals as a PDF');
+    }
+    var clearBtn = byId('clearSelectedTablesBtn');
+    if (clearBtn && !clearBtn.__msRelabelled) {
+      clearBtn.__msRelabelled = true;
+      clearBtn.textContent = 'Clear Report Selection';
+    }
+    var processBtn = byId('processAllBtn');
+    if (processBtn && !processBtn.__msRelabelled) {
+      processBtn.__msRelabelled = true;
+      processBtn.textContent = 'Process Uploaded Files';
+    }
+  }
+
+  function updateKpisAndStatus(){
+    ensureStatusStrip();
+    ensureKpis();
+    ensureFilterChips();
+
+    var fileIds = ['upl-aaw-today','upl-aaw-yesterday','upl-aaw-daybefore','upl-aws','upl-xmin'];
+    var selected = fileIds.filter(hasFile).length;
+    var aawReady = hasFile('upl-aaw-today') && hasFile('upl-aaw-yesterday');
+    var awsReady = hasFile('upl-aws') || stateFromText(textOf(byId('status-aws'))) === 'ready';
+    var xminReady = hasFile('upl-xmin') || stateFromText(textOf(byId('status-xmin'))) === 'ready';
+    var sourcesReady = (aawReady ? 1 : 0) + (awsReady ? 1 : 0) + (xminReady ? 1 : 0);
+    var reportValue = sourcesReady >= 3 ? 'Strong' : sourcesReady === 2 ? 'Medium' : sourcesReady === 1 ? 'Basic' : 'Low';
+    var reportState = sourcesReady >= 3 ? 'ready' : sourcesReady ? 'warning' : 'warning';
+
+    setKpi('msKpiFiles', selected + ' / 5', selected ? 'Files selected in unified intake' : 'Waiting for uploads', selected ? 'ready' : 'warning');
+    setKpi('msKpiAaw', aawReady ? 'Ready' : 'Waiting', aawReady ? 'Today + yesterday selected' : 'Needs today + yesterday', aawReady ? 'ready' : 'warning');
+    setKpi('msKpiAws', awsReady ? 'Ready' : 'Waiting', awsReady ? 'AWS alarm source available' : 'AWS can run independently', awsReady ? 'ready' : 'warning');
+    setKpi('msKpiXmin', xminReady ? 'Ready' : 'Waiting', xminReady ? 'X-Minutal source available' : 'X-Minutal can run independently', xminReady ? 'ready' : 'warning');
+    setKpi('msKpiReport', reportValue, sourcesReady + ' / 3 analysis sources ready', reportState);
+
+    var statusItems = byId('msSystemStatusItems');
+    if (statusItems) {
+      var aawText = aawReady ? 'Ready' : (textOf(byId('status-aaw')) || 'Waiting');
+      var awsText = awsReady ? 'Ready' : (textOf(byId('status-aws')) || 'Waiting');
+      var xminText = xminReady ? 'Ready' : (textOf(byId('status-xmin')) || 'Waiting');
+      statusItems.innerHTML = makeToken('AAW', aawText, aawReady ? 'ready' : stateFromText(aawText)) +
+        makeToken('AWS', awsText, awsReady ? 'ready' : stateFromText(awsText)) +
+        makeToken('X-Minutal', xminText, xminReady ? 'ready' : stateFromText(xminText)) +
+        makeToken('Report', reportValue, reportState);
+    }
+
+    var chipBar = byId('msFilterChipBar');
+    if (chipBar) {
+      var chips = [];
+      var startDate = byId('globalStartDateFilter') && byId('globalStartDateFilter').value;
+      var endDate = byId('globalEndDateFilter') && byId('globalEndDateFilter').value;
+      var startTime = byId('globalStartTimeFilter') && byId('globalStartTimeFilter').value;
+      var endTime = byId('globalEndTimeFilter') && byId('globalEndTimeFilter').value;
+      var turbine = byId('globalTurbineSearch') && byId('globalTurbineSearch').value;
+      var awsSearch = byId('bridgeAwsEventSearch') && byId('bridgeAwsEventSearch').value;
+      var xminSearch = byId('bridgeXminDeviationSearch') && byId('bridgeXminDeviationSearch').value;
+      if (startDate || endDate) chips.push('Date: ' + (startDate || '...') + ' → ' + (endDate || '...'));
+      if (startTime && startTime !== '00:00' || endTime && endTime !== '23:59') chips.push('Time: ' + (startTime || '00:00') + ' → ' + (endTime || '23:59'));
+      if (turbine) chips.push('Turbine: ' + turbine);
+      if (awsSearch) chips.push('AWS: ' + awsSearch);
+      if (xminSearch) chips.push('X-Min: ' + xminSearch);
+      chipBar.innerHTML = '<span class="ms-filter-chip-title">Active filters</span>' +
+        (chips.length ? chips.map(function(c){ return '<span class="ms-filter-chip">' + c.replace(/[&<>]/g, function(ch){ return ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]); }) + '</span>'; }).join('') : '<span class="ms-filter-chip is-muted">No global filters applied</span>');
+    }
+  }
+
+  function bindRefreshEvents(){
+    qa('input, select').forEach(function(el){
+      if (el.__msPolishBound) return;
+      el.__msPolishBound = true;
+      el.addEventListener('change', updateKpisAndStatus);
+      el.addEventListener('input', updateKpisAndStatus);
+    });
+  }
+
+  function init(){
+    document.documentElement.setAttribute('data-polish-ready', '1');
+    ensureStatusStrip();
+    ensureUploadToggle();
+    ensureAwsLegend();
+    polishActionLabels();
+    bindRefreshEvents();
+    updateKpisAndStatus();
+    window.setTimeout(function(){ bindRefreshEvents(); updateKpisAndStatus(); ensureAwsLegend(); }, 500);
+    window.setTimeout(function(){ bindRefreshEvents(); updateKpisAndStatus(); ensureAwsLegend(); }, 1500);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
+  else init();
+  window.addEventListener('load', function(){ window.setTimeout(init, 250); });
+  window.setInterval(function(){ bindRefreshEvents(); updateKpisAndStatus(); }, 1800);
+})();
+</script>
+
+
+
+<style id="ms-calm-ui-overrides-v2">
+  :root{
+    --ms-surface:#ffffff !important;
+    --ms-soft:#f7f8fa !important;
+    --ms-soft-2:#f2f5f8 !important;
+    --ms-line:rgba(148,163,184,.24) !important;
+    --ms-ink:#1f2937 !important;
+    --ms-muted:#6b7280 !important;
+    --ms-blue:#5f7f95 !important;
+    --ms-green:#5f8f7a !important;
+    --ms-red:#b65a5a !important;
+    --ms-orange:#bf8a52 !important;
+    --ms-purple:#8278a8 !important;
+    --ms-shadow:0 12px 28px rgba(31,41,55,.055) !important;
+  }
+
+  body{
+    background:linear-gradient(180deg,#f7f8fa 0%,#f1f4f7 100%) !important;
+    color:#1f2937 !important;
+  }
+
+  .hero,
+  .upload-hub-shell,
+  .report-cta-shell,
+  .workspace-head,
+  .unified-filter-sidebar,
+  .report-card,
+  .ms-kpi-card,
+  .ms-system-status-strip,
+  .ms-aws-legend,
+  .ms-filter-chip-bar,
+  .bridge-card,
+  .panel,
+  .card,
+  .section-card{
+    background:#ffffff !important;
+    border-color:rgba(148,163,184,.22) !important;
+    box-shadow:0 10px 24px rgba(31,41,55,.05) !important;
+  }
+
+  .hero{
+    background:linear-gradient(120deg,#ffffff 0%,#f6f8fb 100%) !important;
+  }
+
+  .hero::before,
+  .hero::after{
+    opacity:.16 !important;
+    filter:saturate(.55) !important;
+  }
+
+  .section-badge,
+  .ms-filter-chip,
+  .ms-status-token,
+  .upload-summary-badge,
+  .file-chip,
+  .print-pill{
+    background:#f5f7f9 !important;
+    border-color:rgba(148,163,184,.24) !important;
+    color:#475569 !important;
+  }
+
+  .ms-kpi-card[data-state="ready"]{
+    background:linear-gradient(180deg,#ffffff 0%,#f4faf7 100%) !important;
+    border-color:rgba(95,143,122,.22) !important;
+  }
+
+  .ms-kpi-card[data-state="warning"]{
+    background:linear-gradient(180deg,#ffffff 0%,#fbf8f2 100%) !important;
+    border-color:rgba(191,138,82,.20) !important;
+  }
+
+  .ms-kpi-card[data-state="danger"]{
+    background:linear-gradient(180deg,#ffffff 0%,#fbf4f4 100%) !important;
+    border-color:rgba(182,90,90,.22) !important;
+  }
+
+  .ms-kpi-value,
+  .hero h1,
+  .section-head h2,
+  .report-card h3{
+    color:#1f2937 !important;
+  }
+
+  .ms-kpi-note,
+  .hero p,
+  .section-head p,
+  .muted,
+  .help-text{
+    color:#6b7280 !important;
+  }
+
+  #processAllBtn,
+  #exportSelectedPdfBtn,
+  #clearSelectedTablesBtn,
+  .ms-upload-toggle,
+  .sidebar-action-btn.is-soft-active-v10,
+  button.primary,
+  .btn.primary,
+  .primary-btn{
+    background:linear-gradient(135deg,#6f8798 0%,#536b7d 100%) !important;
+    border-color:transparent !important;
+    color:#ffffff !important;
+    box-shadow:0 8px 18px rgba(83,107,125,.16) !important;
+  }
+
+  #clearSelectedTablesBtn,
+  .btn.soft,
+  .sidebar-btn-neutral,
+  button.secondary,
+  .secondary-btn{
+    background:#f7f8fa !important;
+    color:#475569 !important;
+    border-color:rgba(148,163,184,.26) !important;
+    box-shadow:none !important;
+  }
+
+  .ms-event-dot[style*="#dc2626"],
+  .ms-event-dot[style*="220, 38, 38"]{
+    --dot-color:#b65a5a !important;
+  }
+
+  .ms-event-token{
+    background:#ffffff !important;
+    border-color:rgba(148,163,184,.22) !important;
+    color:#475569 !important;
+  }
+
+  input,
+  select,
+  textarea{
+    background:#ffffff !important;
+    border-color:#d9e1ea !important;
+    color:#1f2937 !important;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus{
+    border-color:#8ea5b5 !important;
+    box-shadow:0 0 0 3px rgba(95,127,149,.12) !important;
+    outline:none !important;
+  }
+</style>
+
+
+<style id="ms-wider-workspace-v3">
+  /* Wider workspace view requested: more horizontal room for dashboards and tables. */
+  @media (min-width: 1024px) {
+    .shell {
+      width: calc(100vw - 18px) !important;
+      max-width: 2140px !important;
+      padding-left: 9px !important;
+      padding-right: 9px !important;
+    }
+
+    .content {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+    }
+
+    body:not(.aws-analytics-fullwidth-active):not(.manual-sidebar-hidden) .unified-layout {
+      grid-template-columns: minmax(0, 1fr) 300px !important;
+      gap: 14px !important;
+    }
+
+    .unified-main-column,
+    .workspace,
+    .stack,
+    .frame-wrap,
+    iframe {
+      max-width: none !important;
+    }
+
+    .unified-filter-sidebar {
+      max-width: 300px !important;
+    }
+  }
+</style>
+
+
+
+
+<style id="ms-compact-cache-waiting-v1">
+  /* Compact cache badges: hide non-actionable waiting-for-file states to save dashboard space. */
+  #wtgXminCacheBadge.ms-hide-waiting-cache,
+  #wtgDerivedCacheBadge.ms-hide-waiting-cache{
+    display:none !important;
+    width:0 !important;
+    height:0 !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
+
+  #wtgAwsCacheBadge,
+  #wtgXminCacheBadge,
+  #wtgDerivedCacheBadge{
+    padding:4px 8px !important;
+    margin:2px 4px 0 0 !important;
+    gap:5px !important;
+    font-size:11px !important;
+    line-height:1.2 !important;
+    box-shadow:none !important;
+    background:#f8fafc !important;
+    border-color:rgba(148,163,184,.22) !important;
+    color:#64748b !important;
+  }
+
+  #wtgAwsCacheBadge span,
+  #wtgXminCacheBadge span,
+  #wtgDerivedCacheBadge span{
+    width:6px !important;
+    height:6px !important;
+  }
+
+  #unified-controls .upload-hub-header{
+    gap:8px !important;
+    row-gap:4px !important;
+  }
+</style>
+<script id="ms-compact-cache-waiting-script-v1">
+(function(){
+  'use strict';
+  if (window.__MS_COMPACT_CACHE_WAITING_V1) return;
+  window.__MS_COMPACT_CACHE_WAITING_V1 = true;
+
+  function syncOne(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    var text = (el.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    var isWaitingForFile = text.indexOf('waiting for file') !== -1 || text === 'x-min cache waiting' || text === 'summary cache waiting';
+    var isUseful = text.indexOf('ready') !== -1 || text.indexOf('building') !== -1 || text.indexOf('processing') !== -1 || text.indexOf('rows') !== -1 || text.indexOf('item') !== -1;
+    if ((id === 'wtgXminCacheBadge' || id === 'wtgDerivedCacheBadge') && isWaitingForFile && !isUseful) {
+      el.classList.add('ms-hide-waiting-cache');
+    } else {
+      el.classList.remove('ms-hide-waiting-cache');
+    }
+  }
+
+  function sync(){
+    syncOne('wtgXminCacheBadge');
+    syncOne('wtgDerivedCacheBadge');
+    syncOne('wtgAwsCacheBadge');
+  }
+
+  var mo = null;
+  function observe(){
+    if (mo) return;
+    mo = new MutationObserver(sync);
+    mo.observe(document.documentElement, {childList:true, subtree:true, characterData:true});
+  }
+
+  function boot(){
+    sync();
+    observe();
+    setTimeout(sync, 250);
+    setTimeout(sync, 900);
+    setTimeout(sync, 1600);
+    setInterval(sync, 1200);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true}); else boot();
+  window.addEventListener('load', function(){ setTimeout(sync, 300); });
+})();
+</script>
+
+
+
+<style id="ms-compact-readiness-cards-v1">
+  /* Make the Selected files / readiness KPI cards much more compact. */
+  #msKpiOverview.ms-kpi-overview{
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    margin: 0 0 8px !important;
+  }
+
+  #msKpiOverview .ms-kpi-card{
+    min-height: 52px !important;
+    padding: 8px 10px 7px 12px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(31,41,55,.035) !important;
+    display: grid !important;
+    align-content: center !important;
+    gap: 2px !important;
+  }
+
+  #msKpiOverview .ms-kpi-card::before{
+    width: 3px !important;
+    opacity: .72 !important;
+  }
+
+  #msKpiOverview .ms-kpi-label{
+    font-size: 9.5px !important;
+    line-height: 1.1 !important;
+    letter-spacing: .045em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  #msKpiOverview .ms-kpi-value{
+    margin-top: 0 !important;
+    font-size: 15px !important;
+    line-height: 1.08 !important;
+  }
+
+  #msKpiOverview .ms-kpi-note{
+    margin-top: 0 !important;
+    font-size: 10.5px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  @media (max-width: 1280px){
+    #msKpiOverview.ms-kpi-overview{
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+  }
+
+  @media (max-width: 760px){
+    #msKpiOverview.ms-kpi-overview{
+      grid-template-columns: 1fr !important;
+    }
+    #msKpiOverview .ms-kpi-card{
+      min-height: 46px !important;
+    }
+  }
+</style>
 
 </body>
 </html>
